@@ -1,10 +1,15 @@
 import React from 'react';
 
+import './Todo.css';
 
-function Todo(props) {
+
+const Todo = props => {
     return (
-        <div>
+        <div onClick={(e) => props.toggleItem(e, props.todo.id)}
+         >
             {props.todo.task} 
+            
+            
         </div>  
     );
 }

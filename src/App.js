@@ -21,8 +21,8 @@ const todos = [
 
 class App extends React.Component {
 
-constructor() {
-  super();
+constructor(props) {
+  super(props);
  
   this.state = {
     todos: todos,
@@ -56,20 +56,40 @@ const newTodo = {
   });
 };
 
-// clearAll = e => {
-//   e.preventDefault();
-//   let todos = this.state.todos.slice();
-//   todos = todos.filter(todo => !todo.completed);
-//   this.setState({ todos });
-// }
+
+toggleItem = (e, todoId) => {
+  e.target.classList.toggle("complete");
+  this.setState({
+    todos: this.state.todos.map(todo => {
+      if (todoId === todo.id) {
+        todo.completed = !todo.completed;
+        return todo;
+      } else {
+      return todo;
+      }
+    })
+  });
+};
+
+
+
+
+clearCompleted = e => {
+  e.preventDefault();
+  console.log('running!');
+  this.setState({
+    todos: this.state.todos.filter(todo => !todo.completed)
+  });
+};
+
 
 handleChanges = e => {
-  console.log(e.target.value);
-
   this.setState({
     [e.target.name]: e.target.value
   })
 }
+
+
 
 
 
@@ -79,6 +99,7 @@ handleChanges = e => {
         
         <TodoList 
           todos={this.state.todos}
+          toggleItem={this.toggleItem}
         />
 
           <TodoForm 
@@ -88,8 +109,7 @@ handleChanges = e => {
             completed={this.state.id}
             handleChanges={this.handleChanges}
           />
-        
-
+           <button onClick={this.clearCompleted}>Clear Completed</button>
       </div>
     );
   }
