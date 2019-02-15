@@ -1,5 +1,6 @@
 import React from 'react';
-// import Todo from './components/TodoComponents/Todo';
+import './App.scss'
+
 import TodoForm from './components/TodoComponents/TodoForm';
 import TodoList from './components/TodoComponents/TodoList';
 
@@ -95,21 +96,26 @@ handleChanges = e => {
 
   render() {
     return (
-      <div>
-        
-        <TodoList 
-          todos={this.state.todos}
-          toggleItem={this.toggleItem}
-        />
-
-          <TodoForm 
-            addTodo={this.addTodo}
-            task={this.state.task}
-            id={this.state.id}
-            completed={this.state.id}
-            handleChanges={this.handleChanges}
+      <div className="app-container">
+        <h1>Check List</h1>
+        <div className="box-container"> 
+          <div className="box">
+          <TodoList 
+            todos={this.state.todos}
+            toggleItem={this.toggleItem}
           />
-           <button onClick={this.clearCompleted}>Clear Completed</button>
+          <button onClick={this.clearCompleted}><i class="fas fa-tasks"></i> Clear Completed</button>
+          </div>
+            <div className="box">
+              <TodoForm 
+                addTodo={this.addTodo}
+                task={this.state.task}
+                id={this.state.id}
+                completed={this.state.id}
+                handleChanges={this.handleChanges}
+              />
+          </div>
+        </div>   
       </div>
     );
   }
