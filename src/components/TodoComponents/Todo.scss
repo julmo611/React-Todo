@@ -1,0 +1,15 @@
+.complete {
+    text-decoration: line-through;
+    background-color: rgb(245, 195, 87);
+    color: #ffffff;
+   
+}
+
+.todo-item {
+    padding: 10px 5px 10px;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    text-transform: uppercase;
+}
